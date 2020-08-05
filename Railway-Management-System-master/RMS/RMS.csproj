@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B850E59-292F-4EE5-A93D-D4B0C467E5D7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RMS</RootNamespace>
+    <AssemblyName>RMS</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.14.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MySQL\Connector NET 8.0\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEmp.Designer.cs">
+      <DependentUpon>AddEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdmHome.Designer.cs">
+      <DependentUpon>AdmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CancelTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CancelTicket.Designer.cs">
+      <DependentUpon>CancelTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PassDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassDetails.Designer.cs">
+      <DependentUpon>PassDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Details.cs" />
+    <Compile Include="ealogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ealogin.Designer.cs">
+      <DependentUpon>ealogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpHome.Designer.cs">
+      <DependentUpon>EmpHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyDates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyDates.Designer.cs">
+      <DependentUpon>ModifyDates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyRoutes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyRoutes.Designer.cs">
+      <DependentUpon>ModifyRoutes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyTrainDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyTrainDetails.Designer.cs">
+      <DependentUpon>ModifyTrainDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payement.Designer.cs">
+      <DependentUpon>Payement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreviousBookings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreviousBookings.Designer.cs">
+      <DependentUpon>PreviousBookings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemEmp.Designer.cs">
+      <DependentUpon>RemEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="search.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="search.Designer.cs">
+      <DependentUpon>search.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ticket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ticket.Designer.cs">
+      <DependentUpon>Ticket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="train_filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="train_filter.Designer.cs">
+      <DependentUpon>train_filter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserHome.Designer.cs">
+      <DependentUpon>UserHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserSignUp.Designer.cs">
+      <DependentUpon>UserSignUp.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddEmp.resx">
+      <DependentUpon>AddEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdmHome.resx">
+      <DependentUpon>AdmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CancelTicket.resx">
+      <DependentUpon>CancelTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PassDetails.resx">
+      <DependentUpon>PassDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ealogin.resx">
+      <DependentUpon>ealogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpHome.resx">
+      <DependentUpon>EmpHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyDates.resx">
+      <DependentUpon>ModifyDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyRoutes.resx">
+      <DependentUpon>ModifyRoutes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyTrainDetails.resx">
+      <DependentUpon>ModifyTrainDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payement.resx">
+      <DependentUpon>Payement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviousBookings.resx">
+      <DependentUpon>PreviousBookings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RemEmp.resx">
+      <DependentUpon>RemEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="search.resx">
+      <DependentUpon>search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ticket.resx">
+      <DependentUpon>Ticket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="train_filter.resx">
+      <DependentUpon>train_filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserHome.resx">
+      <DependentUpon>UserHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserSignUp.resx">
+      <DependentUpon>UserSignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\train.jpg" />
+    <Content Include="train.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
