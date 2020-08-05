@@ -1,0 +1,194 @@
+1.create table user (
+	fname varchar(15),
+	lname varchar(15),
+	aadhar_no varchar(20),
+	gender varchar(10),
+	age int,
+                  mobile_no varchar(12),
+	email varchar(30) primary key,
+	city varchar(25),
+	password varchar(20)
+	);
+
+1a)create table employee(
+	first_name varchar(15),
+	last_name varchar(15),
+	aadhar_no varchar(20),
+	gender varchar(10),
+	age int,
+        mobile_no varchar(12),
+	email varchar(30),
+	city varchar(25),
+	password varchar(20),
+	emp_id varchar(10) primary key
+	);
+
+1b)create table admin(
+	first_name varchar(15),
+	last_name varchar(15),
+	aadhar_no varchar(20),
+	gender varchar(10),
+	age int,
+        mobile_no varchar(12),
+	email varchar(30),
+	city varchar(25),
+	password varchar(20),
+	adm_id varchar(10) primary key
+	);
+
+
+2.create table passenger(
+	email varchar(30),
+	pass_id int,
+	pmobile_no varchar(12),
+	pass_name varchar(30),
+	age int,
+	gender varchar(10),
+	primary key(pass_id),
+	foreign key (email) references user(email)
+	);
+
+3.create table train
+	(train_no varchar(10),
+	train_name varchar(20),
+	primary key(train_no));
+
+4.create table trainstatus
+	(train_no varchar(10),
+	status varchar(20),
+	foreign key(train_no) references train(train_no)
+	);
+
+5.create table station
+	(st_no varchar(15),
+	st_name varchar(25),
+	primary key(st_no)
+	);
+
+6.create table ticket(
+	pnr_no int  not null auto_increment,
+	 t_date  date,
+	pass_id int,
+	train_no varchar(20),
+	email  varchar(10),
+	route_id int,
+	reservation_status varchar(10),
+	primary key (pnr_no),
+	foreign key(train_no,t_date) references travel_date(train_no,t_date),
+	foreign key(route_id) references route(route_id),
+	foreign key(email) references user(email),
+	foreign key(pass_id) references passenger(pass_id));
+	
+//////////////////////
+8.create table books ( 
+	email varchar(10),
+	ticket_no varchar(20),
+	sourcenamevarchar(30),
+	destname varchar(30),
+	primary key(email,ticket_no),
+	foreign key(email) references user,
+	foreign key(ticket_no) references train);
+/////////////////////
+
+9.create table route(
+	route_id int not null auto_increment,
+	train_no varchar(10),
+	src varchar(15),
+	dest varchar(15),
+	price numeric(6,2),
+	arrivaltime varchar(20),
+	depttime  varchar(20),
+	primary key(route_id),
+	foreign key(train_no) references train(train_no),
+	foreign key(src) references station(st_no),
+	foreign key(dest) references station(st_no));	
+10.create table travel_date(
+	train_no varchar(10),
+	t_date date,
+	total_seats int,
+	avail_seats int,
+                primary key(train_no,t_date),
+	foreign key(train_no) references train(train_no));
+	 
+	
+	delimiter  $$
+	create  trigger aseats
+	after insert on 
+	for each row 
+	begin
+	declare
+	x integer;
+	select avail_seats into x from travel_date where train_no=new.train_no and t_date=new.t_date;
+	update train
+	set avail_seats:=x-1
+	where train_no=new.train_no;
+	end$$
+	
+                 insert into train values('92827','rajadhani');
+	insert into train values('92828','rajadhani');
+                 insert into train values('78564','garibrath');
+	insert into train values('78565','garibrath');
+                 insert into train values('45989','spicerail');
+	insert into train values('45990','spicerail');
+                 insert into train values('65901','godavari');
+	insert into train values('65902','godavari');
+                 insert into train values('32191','jetrailways');
+	insert into train values('32192','jetrailways');
+                 insert into train values('81122','trackindia');
+	insert into train values('81123','trackindia');
+	
+       
+	insert into station values('1','Hyderabad');
+	insert into station values('2','Goa');
+	insert into station values('3','Manipal');
+	insert into station values('4','Visakhapatnam');
+	insert into station values('5','Bangalore');
+	insert into station values('6','Mangalore');
+	insert into station values('7','Secunderabad');
+	insert into station values('8','Thiruvananthapuram');
+	insert into station values('9','Chennai');
+	insert into station values('10','Ooty');
+	insert into station values('11','Mysore');
+	insert into station values('12','Delhi');
+
+	insert into route values ( 0,'92827','1','2',700,'20:30:00','04:30:00');
+	insert into route values ( 0,'92827','2','3',600,'4:30:00','09:00:00');
+	insert into route values ( 0,'92827','1','3',1200,'20:30:00','09:00:00');
+            	insert into route values ( 0,'92828','3','1',1200,'11:00:00','23:30:00');
+	insert into route values ( 0,'92828','3','2',600,'11:00:00','15:30:00');
+	insert into route values ( 0,'92828','2','1',700,'15:30:00','23:30:00');
+
+
+	insert into route values ( 0,'78564','4','5',900,'17:30:00','03:30:00');
+	insert into route values ( 0,'78564','5','6',700,'3:30:00','10:00:00');
+	insert into route values ( 0,'78564','4','6',1300,'17:30:00','10:00:00');
+            	insert into route values ( 0,'78565','6','4',1300,'11:00:00','23:30:00');
+	insert into route values ( 0,'78565','6','5',700,'11:00:00','15:30:00');
+	insert into route values ( 0,'78565','5','4',900,'15:30:00','23:30:00');
+		
+	insert into travel_date values('92827','2020-04-01','800','800');
+	insert into travel_date values('92827','2020-05-08','800','800');
+	insert into travel_date values('92828','2020-04-05','800','800');
+	insert into travel_date values('92828','2020-05-05','800','800');
+
+                  
+                 create view extra( route_id,train_no,src,dest,price,arrivaltime,depttime, src_name) as
+                 select   route_id,train_no,src,dest,price,arrivaltime,depttime,st_name as src_name from route natural join station where route.src=station.st_no;
+	 
+	
+                 select e.train_no,e.src_name as source,s.st_name as destination,price,arrivaltime,depttime,t_date as dept_date from extra e natural join station s,travel_date t where e.dest=s.st_no and e.train_no=t.train_no  order by e.train_no; 
+
+	select e.train_no,e.src_name as source,s.st_name as destination,price,
+                arrivaltime,depttime,t_date as dept_date 
+	from extra e natural join station s,travel_date t
+	where e.dest=s.st_no and e.train_no=t.train_no and t.t_date= STR_TO_DATE('2020-04-01','%Y-%m-%d') 
+	order by e.train_no;
+
+
+ 
+	select  st_no as sa from  station where st_name=___;
+	select st_no as sb  from station where st_name=_____;
+	select train_no as tn from train natural join route where train_name=______  and src=sa and dest=sb ;
+
+	
+	
